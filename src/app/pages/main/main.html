@@ -1,14 +1,36 @@
-<mat-drawer-container class="example-container">
-  <mat-drawer mode="side" opened>
+<mat-drawer-container class="h-full flex flex-col">
+  <mat-drawer mode="side"opened class="h-full flex flex-col">
     
-    Drawer Content
+    <div class="">
+    <div class="flex items-start justify-left">
+      <button aria-label="Example icon button with a menu icon" class="!bg-white hover:!bg-stone-200 transition-colors duration-200">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="h-full flex flex-col items-start justify-left">
+  <button matFab extended (click)="navigate('dashboard')">
+    <mat-icon>home</mat-icon>
+    Dashboard
+  </button>
+
+  <button matFab extended (click)="navigate('users')">
+    <mat-icon>group</mat-icon>
+    Users
+  </button>
+
+  <button matFab extended (click)="navigate('about-us')">
+    <mat-icon>info</mat-icon>
+    About us
+  </button>
+  </div>
 
   </mat-drawer>
 
   <mat-drawer-content>
 
     Main Content
-
 
   </mat-drawer-content>
 </mat-drawer-container>
