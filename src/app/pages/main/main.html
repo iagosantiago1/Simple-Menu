@@ -1,36 +1,73 @@
 <mat-drawer-container class="h-full flex flex-col">
-  <mat-drawer mode="side"opened class="h-full flex flex-col">
-    
-    <div class="">
-    <div class="flex items-start justify-left">
-      <button aria-label="Example icon button with a menu icon" class="!bg-white hover:!bg-stone-200 transition-colors duration-200">
-        <mat-icon>menu</mat-icon>
-      </button>
+
+  <mat-drawer mode="side" opened class="h-full flex flex-col w-60">
+
+
+    <!--Sidenav-->
+    <div class="flex items-center gap-2 px-6 py-6 ">
+      <img src="https://modernize-angular-main.netlify.app/assets/images/logos/dark-logo.svg" alt="Logo" class="">
     </div>
-  </div>
 
-  <div class="h-full flex flex-col items-start justify-left">
-  <button matFab extended (click)="navigate('dashboard')">
-    <mat-icon>home</mat-icon>
-    Dashboard
-  </button>
+    <!-- Dashboard, Users, etc -->
+    <div class="px-6 mt-6">
+      <span class="text-xs uppercase tracking-wide font-medium text-[14px]">Home</span>
+      <div class="mt-3 flex flex-col gap-2">
+        <button mat-button (click)="navigate('dashboard')" class="hover:!bg-stone-200 transition-colors duration-200">
+          <mat-icon class="!text-xl text-gray-500 group-hover:text-gray-700">home</mat-icon>
+          <span class="text-sm font-medium">Dashboard</span>
+        </button>
 
-  <button matFab extended (click)="navigate('users')">
-    <mat-icon>group</mat-icon>
-    Users
-  </button>
+        <button mat-button (click)="navigate('users')" class="hover:!bg-stone-200 transition-colors duration-200">
+          <mat-icon class="!text-xl text-gray-500 group-hover:text-gray-700">group</mat-icon>
+          <span class="text-sm font-medium">Users</span>
+        </button>
 
-  <button matFab extended (click)="navigate('about-us')">
-    <mat-icon>info</mat-icon>
-    About us
-  </button>
-  </div>
+        <button mat-button (click)="navigate('about-us')" class="hover:!bg-stone-200 transition-colors duration-200">
+          <mat-icon class="!text-xl text-gray-500 group-hover:text-gray-700">info</mat-icon>
+          <span class="text-sm font-medium">About us</span>
+        </button>
 
+      </div>
+      <!-- Scrolling -->
+      <cdk-virtual-scroll-viewport itemSize="50" class="h-screen w-full block overflow-auto">
+      </cdk-virtual-scroll-viewport>
+    </div>
   </mat-drawer>
 
-  <mat-drawer-content>
 
-    Main Content
+  <!-- Main Content------------------------------------------------------------------------------------------------------- -->
+  <mat-drawer-content class="flex text-sm font-medium">
+
+
+    <mat-toolbar class="flex items-center px-4 h-14 ">
+      <!-- Menu icon -->
+      <button matIconButton aria-label="Example icon-button with menu icon" class="icon-btn">
+        <mat-icon>menu</mat-icon>
+      </button>
+      
+      <!-- App, chat, email etc -->
+      <div class="flex gap-8 ml-4">
+        <span class="justify-self-center cursor-pointer">App</span>
+        <span class="justify-self-center cursor-pointer">Chat</span>
+        <span class="justify-self-center cursor-pointer">Calendar</span>
+        <span class="justify-self-center cursor-pointer">Email</span>
+      </div>
+
+      <!-- Right icons -->
+      <div class="flex items-center gap-2 ml-auto">
+        <button matIconButton class="icon-btn" aria-label="">
+          <mat-icon>logout</mat-icon>
+        </button>
+        <button matIconButton class="icon-btn" aria-label="">
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button matIconButton class="icon-btn" aria-label="">
+          <mat-icon>person</mat-icon>
+        </button>
+      </div>
+
+    </mat-toolbar>
+
 
   </mat-drawer-content>
 </mat-drawer-container>

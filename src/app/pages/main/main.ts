@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar'
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-main',
@@ -10,7 +12,9 @@ import { MatIconModule } from '@angular/material/icon';
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    ScrollingModule
   ],
   templateUrl: './main.html',
   styleUrl: './main.scss'
@@ -29,6 +33,8 @@ export class Main {
   navigate(path: string){
     this.router.navigate([path]);
   }
+
+  items = Array.from({length: 100000}).map((_, i) => `Item #${i}`);
 
 
 }
