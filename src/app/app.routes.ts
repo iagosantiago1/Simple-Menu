@@ -27,6 +27,11 @@ export const routes: Routes = [
         path: 'about-us',
         loadComponent: () => import('./pages/about-us/about-us').then((c) => c.AboutUs)
       },
+
+      {
+        path: 'list',
+        loadComponent: () => import('./associate/list/list').then((c) => c.List)
+      },
     ]
   },
 

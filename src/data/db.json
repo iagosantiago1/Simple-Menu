@@ -1,0 +1,11 @@
+{
+    "associate": [
+        {
+            "id": 1,
+            "name": "Lucas",
+            "address": "Constituição",
+            "creditlimit": 1000,
+            "status": true
+        }
+    ]
+}
