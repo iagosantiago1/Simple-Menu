@@ -1,11 +1,18 @@
 {
-    "associate": [
-        {
-            "id": 1,
-            "name": "Lucas",
-            "address": "Constituição",
-            "creditlimit": 1000,
-            "status": true
-        }
-    ]
+  "associate": [
+    {
+      "id": "1",
+      "name": "Lucas",
+      "address": "Constituição",
+      "creditlimit": 1000,
+      "status": true
+    },
+    {
+      "id": "2",
+      "name": "Pedro",
+      "address": "Jardim",
+      "creditlimit": 1000,
+      "status": false
+    }
+  ]
 }

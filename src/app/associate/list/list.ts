@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, viewChild } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card'
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatTable, MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { Associate } from '../../_shared/associate';
 import { associateModel } from '../../../model/associate';
@@ -26,6 +26,8 @@ export class List implements OnInit,OnDestroy {
   displayHeaders=['id', 'name', 'address', 'cl', 'status', 'action']
   datasource!: MatTableDataSource<associateModel>; 
 
+  @ViewChild(MatTable) table!:MatTable<any>
+
   constructor(private service:Associate, private dialog:MatDialog) {
     
   }
@@ -36,6 +38,15 @@ export class List implements OnInit,OnDestroy {
       this.datasource=new MatTableDataSource(this._list);
     });
   }
+
+  UpdatelList(){
+    let _sub= this.service.Getall().subscribe(item=>{
+      this._list = item;
+      this.datasource.data=this._list;
+      this.table.renderRows();
+    });
+  }
+
   ngOnInit(): void {
     this.GetallList();
   }
@@ -43,14 +54,32 @@ export class List implements OnInit,OnDestroy {
     this.subs.unsubscribe();
   }
   add(){
-    this.openPopup();
+    this.openPopup(0);
   }
-  openPopup(){
+  openPopup(id:number){
       this.dialog.open(Add, {
-        width:'60%',
+        width:'40%',
         enterAnimationDuration:'1000ms',
-        exitAnimationDuration:'1000ms'
+        exitAnimationDuration:'1000ms',
+        data: {
+          id: Number(id)
+        }
+      }).afterClosed().subscribe(s=>{
+        this.UpdatelList();
       })
+      
+  }
+
+  Edit(id:any){
+    this.openPopup(id);
+  }
+  Delete(id:any){
+    if(confirm('Você tem certeza que deseja deletar?')){
+      this.service.Delete(id).subscribe(item => {
+        alert('Deletado com Sucesso.');
+        this.UpdatelList();
+      })
+    }
   }
 
 }

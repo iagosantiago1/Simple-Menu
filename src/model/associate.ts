@@ -1,5 +1,5 @@
 export interface associateModel {
-    id: number,
+    id?: any;
     name: string,
     address: string,
     creditlimit: number,
